@@ -1,0 +1,2 @@
+-dontwarn com.stripe.android.financialconnections.**
+-dontwarn com.stripe.android.stripecardscan.**
