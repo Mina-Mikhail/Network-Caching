@@ -6,8 +6,8 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
-import com.minaMikhail.networkCaching.databinding.ActivitySplashBinding
 import com.minaMikhail.home.presentation.view.HomeActivity
+import com.minaMikhail.networkCaching.databinding.ActivitySplashBinding
 import com.minaMikhail.preferences.appPreferences.AppPreferences
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject

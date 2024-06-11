@@ -41,6 +41,7 @@ dependencies {
     implementation(libs.hilt)
     ksp(libs.hilt.compiler)
 
-    // Preferences
-    implementation(libs.preferences)
+    // DataStore
+    api(libs.preferencesDatastore)
+    implementation(libs.protoDatastore)
 }

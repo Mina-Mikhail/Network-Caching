@@ -3,7 +3,7 @@
 ksp = "2.0.0-1.0.21"
 
 # Plugins
-agp = "8.4.1"
+agp = "8.4.2"
 kotlin = "2.0.0"
 
 # Support
@@ -31,8 +31,8 @@ okHttp = "4.11.0"
 # Hilt
 hiltVersion = "2.51.1"
 
-# Preferences
-preferences = "1.1.1"
+# DataStore
+datastore = "1.1.1"
 
 
 [libraries]
@@ -68,8 +68,9 @@ okHttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okHtt
 hilt = { group = "com.google.dagger", name = "hilt-android", version.ref = "hiltVersion" }
 hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "hiltVersion" }
 
-# Preferences
-preferences = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "preferences" }
+# DataStore
+preferencesDatastore = { group = "androidx.datastore", name = "datastore-preferences-core", version.ref = "datastore" }
+protoDatastore = { group = "androidx.datastore", name = "datastore-core", version.ref = "datastore" }
 
 
 [bundles]
