@@ -1,7 +1,7 @@
-package com.minaMikhail.preferences.dataStore.di
+package com.minaMikhail.preferences.cachingManager.di
 
-import com.minaMikhail.preferences.dataStore.CachingManager
-import com.minaMikhail.preferences.dataStore.CachingManagerImpl
+import com.minaMikhail.preferences.cachingManager.CachingManager
+import com.minaMikhail.preferences.cachingManager.CachingManagerImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -10,7 +10,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-interface CachingManagerModule {
+fun interface CachingManagerModule {
 
     @Binds
     @Singleton

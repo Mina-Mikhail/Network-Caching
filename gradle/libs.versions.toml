@@ -70,7 +70,6 @@ hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.r
 
 # DataStore
 preferencesDatastore = { group = "androidx.datastore", name = "datastore-preferences-core", version.ref = "datastore" }
-protoDatastore = { group = "androidx.datastore", name = "datastore-core", version.ref = "datastore" }
 
 
 [bundles]

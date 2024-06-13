@@ -1,10 +1,8 @@
 package com.minaMikhail.home.di
 
-import com.minaMikhail.home.data.dataSource.local.HomeLocalDataSource
-import com.minaMikhail.home.data.dataSource.local.HomeLocalDataSourceImpl
 import com.minaMikhail.home.data.dataSource.remote.HomeRemoteDataSource
-import com.minaMikhail.home.domain.repository.HomeRepository
 import com.minaMikhail.home.data.repository.HomeDataRepository
+import com.minaMikhail.home.domain.repository.HomeRepository
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -26,17 +24,11 @@ object ProvidingHomeModule {
 
 @Module
 @InstallIn(SingletonComponent::class)
-interface BindingHomeModule {
+fun interface BindingHomeModule {
 
     @Binds
     @Singleton
     fun bindRepository(
         homeDataRepository: HomeDataRepository
     ): HomeRepository
-
-    @Binds
-    @Singleton
-    fun bindLocalDataSource(
-        homeLocalDataSourceImpl: HomeLocalDataSourceImpl
-    ): HomeLocalDataSource
 }

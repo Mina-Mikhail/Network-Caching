@@ -1,4 +1,4 @@
-package com.minaMikhail.preferences.dataStore
+package com.minaMikhail.preferences.cachingManager
 
 import androidx.datastore.preferences.core.Preferences
 import kotlinx.coroutines.flow.Flow

@@ -6,10 +6,13 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.minaMikhail.home.presentation.view.HomeActivity
 import com.minaMikhail.networkCaching.databinding.ActivitySplashBinding
-import com.minaMikhail.preferences.appPreferences.AppPreferences
+import com.minaMikhail.preferences.cachingManager.CachingManager
+import com.minaMikhail.preferences.cachingManager.utils.CachingPreferenceKey.REMOTE_CONFIG_CACHING_KEY
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @SuppressLint("CustomSplashScreen")
@@ -20,7 +23,7 @@ class SplashActivity : AppCompatActivity() {
     private val binding get() = checkNotNull(_binding)
 
     @Inject
-    lateinit var appPreferences: AppPreferences
+    lateinit var cachingManager: CachingManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,7 +31,9 @@ class SplashActivity : AppCompatActivity() {
         initBinding()
 
         // To enable api caching for the app
-        appPreferences.enableCaching(true)
+        lifecycleScope.launch {
+            cachingManager.set(REMOTE_CONFIG_CACHING_KEY, true)
+        }
 
         decideNavigationLogic()
     }

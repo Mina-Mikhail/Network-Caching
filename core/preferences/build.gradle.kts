@@ -43,5 +43,4 @@ dependencies {
 
     // DataStore
     api(libs.preferencesDatastore)
-    implementation(libs.protoDatastore)
 }

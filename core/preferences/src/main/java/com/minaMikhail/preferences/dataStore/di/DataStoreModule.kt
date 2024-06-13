@@ -9,6 +9,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -19,11 +20,35 @@ import javax.inject.Singleton
 object DataStoreModule {
 
     @Provides
+    @DataStoreIoDispatcher
+    fun providesIoDispatcher(): CoroutineDispatcher = Dispatchers.IO
+
+    @Provides
     @Singleton
-    fun provideAppDataStore(
-        @ApplicationContext applicationContext: Context
+    @DataStoreIoScope
+    fun providesIoCoroutineScope(
+        @DataStoreIoDispatcher defaultDispatcher: CoroutineDispatcher
+    ): CoroutineScope = CoroutineScope(SupervisorJob() + defaultDispatcher)
+
+    @Provides
+    @Singleton
+    @UserSessionDataStore
+    fun provideUserSessionDataStore(
+        @ApplicationContext applicationContext: Context,
+        @DataStoreIoScope ioScope: CoroutineScope
     ): DataStore<Preferences> = PreferenceDataStoreFactory.create(
-        scope = CoroutineScope(Dispatchers.IO + SupervisorJob()),
-        produceFile = { applicationContext.filesDir.resolve("settings.preferences_pb") }
+        scope = ioScope,
+        produceFile = { applicationContext.filesDir.resolve("user_session.preferences_pb") }
+    )
+
+    @Provides
+    @Singleton
+    @RateLimiterDataStore
+    fun provideRateLimiterDataStore(
+        @ApplicationContext applicationContext: Context,
+        @DataStoreIoScope ioScope: CoroutineScope
+    ): DataStore<Preferences> = PreferenceDataStoreFactory.create(
+        scope = ioScope,
+        produceFile = { applicationContext.filesDir.resolve("rale_limiter.preferences_pb") }
     )
 }
